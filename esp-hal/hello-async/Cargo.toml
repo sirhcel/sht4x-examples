@@ -23,6 +23,7 @@ esp-hal = { version = "1.0.0-beta.0", features = [
 esp-hal-embassy = { version = "0.7.0", features = ["esp32c3"] }
 esp-println = { version = "0.13.0", features = ["defmt-espflash", "esp32c3"] }
 static_cell = { version = "2.1.0", features = ["nightly"] }
+sht4x = { git = "https://github.com/sirhcel/sht4x.git", rev = "d188cfbce3179be88e64825b92df2be32b0f652f", features = ["defmt", "embedded-hal-async"]}
 
 [profile.dev]
 # Rust debug is too slow.
