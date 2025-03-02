@@ -1003,8 +1003,9 @@ dependencies = [
 
 [[package]]
 name = "sht4x"
-version = "0.2.0-alpha.0"
-source = "git+https://github.com/sirhcel/sht4x.git?rev=40cef0dabc5c5fed0a2ada2e8f5caa75d4e51075#40cef0dabc5c5fed0a2ada2e8f5caa75d4e51075"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b233b2a4c137cff7e85beb7a3662ca72388b62258305fe164e668bd2c7fa11e7"
 dependencies = [
  "defmt",
  "embedded-hal 1.0.0",
