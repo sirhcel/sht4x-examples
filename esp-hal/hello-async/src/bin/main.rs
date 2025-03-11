@@ -39,16 +39,16 @@ async fn main(_spawner: Spawner) {
             .with_scl(scl)
             .with_sda(sda)
             .into_async();
-    let mut sht4x = Sht4xAsync::new(i2c);
-    let mut delay = Delay;
+    let delay = Delay;
+    let mut sht4x = Sht4xAsync::new(i2c, delay);
 
     info!("Hello world!");
 
-    let serial = sht4x.serial_number(&mut delay).await.unwrap();
+    let serial = sht4x.serial_number().await.unwrap();
     info!("sensor serial: {:x}", serial);
 
     loop {
-        let measurement = sht4x.measure(Precision::High, &mut delay).await.unwrap();
+        let measurement = sht4x.measure(Precision::High).await.unwrap();
         info!("sensor measurement: {}", measurement);
 
         Timer::after(Duration::from_secs(3)).await;

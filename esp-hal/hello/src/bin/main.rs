@@ -34,18 +34,16 @@ fn main() -> ! {
             .unwrap()
             .with_scl(scl)
             .with_sda(sda);
-    let mut sht4x = Sht4x::new(i2c);
-    let mut delay = Delay::new();
+    let delay = Delay::new();
+    let mut sht4x = Sht4x::new(i2c, delay);
 
-    let serial = sht4x.serial_number(&mut delay).unwrap();
+    let serial = sht4x.serial_number().unwrap();
     info!("sensor serial: {:x}", serial);
 
     loop {
-        let measurement = sht4x.measure(Precision::High, &mut delay).unwrap();
+        let measurement = sht4x.measure(Precision::High).unwrap();
         info!("sensor measurement: {}", measurement);
 
         delay.delay_millis(3000);
     }
-
-    // for inspiration have a look at the examples at https://github.com/esp-rs/esp-hal/tree/esp-hal-v1.0.0-beta.0/examples/src/bin
 }
